@@ -1,0 +1,134 @@
+.navbar {
+    background: linear-gradient(90deg, #13a550, #0e9140);
+    box-shadow: 0 4px 15px rgba(19, 165, 80, 0.4);
+    padding: 15px 30px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+.navbarContent {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbarTitle {
+    color: white;
+    font-size: 28px;
+    font-weight: 800;
+    text-align: center;
+    flex-grow: 1;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    text-shadow: 0 2px 4px rgba(14, 145, 64, 0.3);
+}
+
+.userMenu {
+    position: relative;
+}
+
+.userButton {
+    background: rgba(255, 255, 255, 0.95);
+    color: #0e9140;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+}
+
+.userButton:hover {
+    background: #2a5298;
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(42, 82, 152, 0.4);
+}
+
+.dropdownMenu {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background: rgba(255, 255, 255, 0.97);
+    border-radius: 15px;
+    padding: 10px 0;
+    min-width: 180px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(8px);
+    animation: fadeIn 0.3s ease-out;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.dropdownItem {
+    display: block;
+    padding: 10px 20px;
+    color: #222;
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.dropdownItem:hover {
+    background: #f0f0f0;
+    color: #13a550;
+}
+
+.mainContent {
+    margin-top: 80px; /* Espacio para que el contenido no quede debajo del navbar fijo */
+    padding: 20px;
+    min-height: calc(100vh - 80px); /* Asegura que ocupe toda la altura restante */
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 768px) {
+    .navbar {
+        padding: 10px 20px;
+    }
+
+    .navbarTitle {
+        font-size: 24px;
+    }
+
+    .userButton {
+        padding: 8px 16px;
+        font-size: 14px;
+    }
+
+    .dropdownMenu {
+        min-width: 160px;
+    }
+}
+
+@media (max-width: 480px) {
+    .navbarTitle {
+        font-size: 20px;
+    }
+
+    .userButton {
+        padding: 6px 12px;
+        font-size: 13px;
+    }
+
+    .dropdownItem {
+        font-size: 14px;
+        padding: 8px 16px;
+    }
+}

@@ -38,6 +38,9 @@ const LoginPage: React.FC = () => {
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         console.log('Login attempt:', { username, password });
+
+        window.location.href = '/student/home';
+
     };
 
     return (
@@ -61,7 +64,9 @@ const LoginPage: React.FC = () => {
                         onChange={(e) => setPassword(e.target.value)}
                     />
                     <button type="submit" className={styles.loginButton}>
-                        Iniciar Sesión
+                        <a href="/student/home" className={styles.loginButtonLink}>
+                            Iniciar Sesión
+                        </a>
                     </button>
                 </form>
                 <div className={styles.additionalLinks}>
