@@ -1,0 +1,209 @@
+.loginContainer {
+    min-height: 100vh;
+    background: linear-gradient(135deg, rgba(42, 82, 152, 0.85), rgba(43, 70, 54, 0.85)), 
+                  url('../../../public/images/fondologin.png') no-repeat center center;
+    background-size: cover;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    padding-left: 300px;
+    padding-right: 50px;
+    overflow: hidden;
+    position: relative;
+}
+
+.loginContainer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.1);
+    z-index: 1;
+    pointer-events: none;
+}
+
+.loginCard {
+    background: rgba(255, 255, 255, 0.97);
+    border-radius: 25px;
+    padding: 60px 45px;
+    width: 100%;
+    max-width: 480px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+    backdrop-filter: blur(8px);
+    animation: slideInLeft 0.7s ease-out;
+    position: relative;
+    z-index: 2;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.loginTitle {
+    color: #0e9140;
+    font-size: 34px;
+    font-weight: 900;
+    text-align: center;
+    margin-bottom: 15px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    text-shadow: 0 2px 4px rgba(14, 145, 64, 0.2);
+}
+
+.loginSubtitle {
+    color: #444;
+    text-align: center;
+    margin-bottom: 45px;
+    font-size: 17px;
+    font-style: italic;
+    opacity: 0.9;
+}
+
+.loginForm {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.inputGroup {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.inputGroup label {
+    color: #222;
+    font-weight: 600;
+    font-size: 15px;
+    transition: all 0.3s ease;
+    position: absolute;
+    top: 14px;
+    left: 16px;
+    pointer-events: none;
+}
+
+.inputGroup input {
+    padding: 16px 18px;
+    border: 2px solid #e5e5e5;
+    border-radius: 12px;
+    font-size: 16px;
+    background: #fafafa;
+    transition: all 0.3s ease;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.inputGroup input:focus {
+    outline: none;
+    border-color: #13a550;
+    background: #fff;
+    box-shadow: 0 0 10px rgba(19, 165, 80, 0.4);
+}
+
+.inputGroup input:not(:placeholder-shown) + label,
+.inputGroup input:focus + label {
+    transform: translateY(-28px) translateX(-8px);
+    font-size: 13px;
+    color: #13a550;
+    background: #fff;
+    padding: 0 6px;
+}
+
+.loginButton {
+    background: linear-gradient(90deg, #13a550, #0e9140);
+    color: white;
+    padding: 16px;
+    border: none;
+    border-radius: 12px;
+    font-size: 18px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.4s ease;
+    box-shadow: 0 5px 18px rgba(19, 165, 80, 0.5);
+    position: relative;
+    overflow: hidden;
+}
+
+.loginButton::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.6s ease, height 0.6s ease;
+}
+
+.loginButton:hover::after {
+    width: 200%;
+    height: 200%;
+}
+
+.loginButton:hover {
+    background: linear-gradient(90deg, #0e9140, #026b19);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(19, 165, 80, 0.7);
+}
+
+.additionalLinks {
+    margin-top: 30px;
+    text-align: center;
+}
+
+.forgotPassword {
+    color: #2a5298;
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.forgotPassword:hover {
+    color: #1a3c78;
+    text-decoration: underline;
+    text-shadow: 0 1px 2px rgba(26, 60, 120, 0.2);
+}
+
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@media (max-width: 768px) {
+    .loginContainer {
+        padding-left: 50px;
+        justify-content: center;
+    }
+    
+    .loginCard {
+        max-width: 420px;
+        padding: 50px 35px;
+    }
+}
+
+@media (max-width: 480px) {
+    .loginContainer {
+        padding: 20px;
+    }
+    
+    .loginCard {
+        padding: 40px 25px;
+        margin: 10px;
+    }
+    
+    .loginTitle {
+        font-size: 28px;
+    }
+    
+    .loginButton {
+        font-size: 16px;
+    }
+}
