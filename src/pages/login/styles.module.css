@@ -101,10 +101,9 @@
 
 .inputGroup input:not(:placeholder-shown) + label,
 .inputGroup input:focus + label {
-    transform: translateY(-28px) translateX(-8px);
+    transform: translateY(-30px) translateX(-8px);
     font-size: 13px;
     color: #13a550;
-    background: #fff;
     padding: 0 6px;
 }
 

@@ -1,27 +1,6 @@
 import React, { useState } from 'react';
 import styles from './styles.module.css';
-
-interface InputFieldProps {
-    id: string;
-    label: string;
-    type: string;
-    value: string;
-    onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-}
-
-const InputField: React.FC<InputFieldProps> = ({ id, label, type, value, onChange }) => (
-    <div className={styles.inputGroup}>
-        <input
-            type={type}
-            id={id}
-            value={value}
-            onChange={onChange}
-            placeholder=""
-            required
-        />
-        <label htmlFor={id}>{label}</label>
-    </div>
-);
+import InputField from './components/InputField';
 
 const Title = () => (
     <h1 className={styles.loginTitle}>Reserva de Laboratorios</h1>

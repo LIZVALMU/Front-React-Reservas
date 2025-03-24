@@ -21,6 +21,7 @@ const DropdownMenu = ({ linkTo, title }: DropdownMenuProps) => {
 function CustomNavbar({ children }: CustomNavbarProps) {
 	const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 	const dropdownRef = useRef<HTMLDivElement | null>(null);
+	const [userName, setUserName] = useState('');
 
 	const toggleDropdown = () => {
 		setIsDropdownOpen((prev) => !prev);
@@ -32,7 +33,11 @@ function CustomNavbar({ children }: CustomNavbarProps) {
 				setIsDropdownOpen(false);
 			}
 		};
-
+		const fetchUserName = async () => {
+			//TODO: Fetch user name from the server
+			setUserName("Usuario");
+		};
+		fetchUserName();
 		document.addEventListener("mousedown", handleClickOutside);
 		return () => document.removeEventListener("mousedown", handleClickOutside);
 	}, []);
@@ -48,10 +53,9 @@ function CustomNavbar({ children }: CustomNavbarProps) {
 			<nav className={styles.navbar}>
 				<div className={styles.navbarContent}>
 					<div className={styles.navbarTitle}>Dashboard</div>
-
 					<div className={styles.userMenu} ref={dropdownRef}>
 						<button className={styles.userButton} onClick={toggleDropdown}>
-							Usuario
+							{userName}
 						</button>
 						{isDropdownOpen && (
 							<div className={styles.dropdownMenu}>
