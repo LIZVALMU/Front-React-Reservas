@@ -1,53 +1,72 @@
-import React, { useState, ReactNode } from 'react';
-import styles from './style.module.css'; // Asegúrate de que el nombre del archivo CSS coincida
+import React, { useState, useRef, useEffect } from "react";
+import styles from "./style.module.css";
+import { CustomNavbarProps, DropdownMenuProps } from "./TypesCustomBar";
 
-interface CustomNavbarProps {
-  children?: ReactNode; // Permitimos que el componente acepte hijos
-}
+/**
+ * A functional component that renders a dropdown menu item as a link.
+ *
+ * @param {Object} props - The props for the component.
+ * @param {string} props.linkTo - The URL to which the dropdown item should link.
+ * @param {string} props.title - The text to display for the dropdown item.
+ * @returns {JSX.Element} A styled anchor element representing the dropdown menu item.
+ */
+const DropdownMenu = ({ linkTo, title }: DropdownMenuProps) => {
+	return (
+		<a href={linkTo} className={styles.dropdownItem}>
+			{title}
+		</a>
+	);
+};
 
 function CustomNavbar({ children }: CustomNavbarProps) {
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+	const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+	const dropdownRef = useRef<HTMLDivElement | null>(null);
 
-  const toggleDropdown = () => {
-    setIsDropdownOpen(!isDropdownOpen);
-  };
+	const toggleDropdown = () => {
+		setIsDropdownOpen((prev) => !prev);
+	};
 
-  return (
-    <>
-      <nav className={styles.navbar}>
-        <div className={styles.navbarContent}>
-          <div className={styles.navbarTitle}>
-            Dashboard
-          </div>
+	useEffect(() => {
+		const handleClickOutside = (event: MouseEvent) => {
+			if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+				setIsDropdownOpen(false);
+			}
+		};
 
-          <div className={styles.userMenu}>
-            <button
-              className={styles.userButton}
-              onClick={toggleDropdown}
-            >
-              Usuario
-            </button>
-            {isDropdownOpen && (
-              <div className={styles.dropdownMenu}>
-                <a href="/profile" className={styles.dropdownItem}>
-                  Perfil
-                </a>
-                <a href="/settings" className={styles.dropdownItem}>
-                  Configuración
-                </a>
-                <a href="/logout" className={styles.dropdownItem}>
-                  Cerrar Sesión
-                </a>
-              </div>
-            )}
-          </div>
-        </div>
-      </nav>
-      <main className={styles.mainContent}>
-        {children} {/* Renderizamos el contenido envuelto */}
-      </main>
-    </>
-  );
+		document.addEventListener("mousedown", handleClickOutside);
+		return () => document.removeEventListener("mousedown", handleClickOutside);
+	}, []);
+
+	const menuItems = [
+		{ linkTo: "/profile", title: "Perfil" },
+		{ linkTo: "/settings", title: "Configuración" },
+		{ linkTo: "/logout", title: "Cerrar Sesión" },
+	];
+
+	return (
+		<div className={styles.container}>
+			<nav className={styles.navbar}>
+				<div className={styles.navbarContent}>
+					<div className={styles.navbarTitle}>Dashboard</div>
+
+					<div className={styles.userMenu} ref={dropdownRef}>
+						<button className={styles.userButton} onClick={toggleDropdown}>
+							Usuario
+						</button>
+						{isDropdownOpen && (
+							<div className={styles.dropdownMenu}>
+								{menuItems.map((item) => (
+									<DropdownMenu key={item.linkTo} {...item} />
+								))}
+							</div>
+						)}
+					</div>
+				</div>
+			</nav>
+
+			<main className={styles.mainContent}>{children}</main>
+		</div>
+	);
 }
 
 export default CustomNavbar;

@@ -1,20 +1,49 @@
-import CustomNavbar from "../../../commons/navbar/CustomBar"; // Asegúrate de que la ruta sea correcta
-import styles from './style.module.css'; // Nuevo archivo CSS para HomeStudent
+import CustomNavbar from "../../../commons/navbar/CustomBar";
+import styles from "./style.module.css";
+
+/**
+ * Interface representing the properties for the CardsContainer component.
+ *
+ * @property {string} link - The URL or path the card should navigate to when clicked.
+ * @property {string} image - The source URL of the image to be displayed on the card.
+ * @property {string} title - The title or heading text to be displayed on the card.
+ */
+interface CardsContainerProps {
+  link: string;
+  image: string;
+  title: string;
+}
+
+const CardsContainer = ({ link, image, title }: CardsContainerProps) => {
+  return (
+    <a href={link} className={styles.card}>
+      <div
+        className={styles.cardImage}
+        style={{ backgroundImage: `url(${image})` }}>
+      </div>
+      <h3 className={styles.cardTitle}>{title}</h3>
+    </a>
+  );
+};
 
 function HomeStudent() {
   return (
     <CustomNavbar>
       <h2 className={styles.sectionTitle}>¿Qué Acción Deseas Realizar?</h2>
       <div className={styles.cardsContainer}>
-        <a href="/mis-reservas" className={styles.card}>
-          <div className={styles.cardImage} style={{ backgroundImage: 'url(/images/fondologin.png)' }}></div>
-          <h3 className={styles.cardTitle}>Mis Reservas</h3>
-        </a>
-        <img src="/images/my-bookings.jpg" alt="Fondo" />
-        <a href="/crear-reserva" className={styles.card}>
-          <div className={styles.cardImage} style={{ backgroundImage: 'url(/images/)' }}></div>
-          <h3 className={styles.cardTitle}>Crear Reserva</h3>
-        </a>
+
+        <CardsContainer
+          link="/mis-reservas"
+          image="/images/CrearReserva.jpg"
+          title="Mis Reservas"
+        />
+
+        <CardsContainer
+          link="/crear-reserva"
+          image="/images/MiReservas.jpg"
+          title="Crear Reserva"
+        />
+
       </div>
     </CustomNavbar>
   );
