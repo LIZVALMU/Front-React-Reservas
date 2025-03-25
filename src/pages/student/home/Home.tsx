@@ -18,13 +18,13 @@ const CardsContainer = ({ link, image, title }: CardsContainerProps) => {
 function HomeStudent() {
 
   const menuItems = [
-    {link: "/mis-reservas", image: "/images/CrearReserva.jpg", title: "Mis Reservas"},
-    {link: "/crear-reserva", image: "/images/MiReservas.jpg", title: "Crear Reserva"},
+    {link: "/mis-reservas", image: "/images/CrearReserva.jpg", title: "Mis reservas"},
+    {link: "/crear-reserva", image: "/images/MiReservas.jpg", title: "Crear reserva"},
   ];
 
   return (
     <CustomNavbar>
-      <h2 className={styles.sectionTitle}>¿Qué Acción Deseas Realizar?</h2>
+      <h2 className={styles.sectionTitle}>¿Qué acción deseas realizar?</h2>
       <div className={styles.cardsContainer}>
         {menuItems.map((item, index) => (
           <CardsContainer

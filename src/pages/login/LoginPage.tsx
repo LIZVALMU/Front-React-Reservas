@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import styles from './styles.module.css';
 import InputField from './components/InputField';
 
@@ -13,13 +14,17 @@ const CredentialsContentText = () => (
 const LoginPage: React.FC = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
+    const navigate = useNavigate(); // React Router
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         console.log('Login attempt:', { username, password });
 
-        window.location.href = '/student/home';
-
+        if (username && password) {
+            navigate('/student/home'); // Usa navigate en lugar de window.location.href
+        } else {
+            alert('Por favor ingresa tus credenciales');
+        }
     };
 
     return (
@@ -43,9 +48,7 @@ const LoginPage: React.FC = () => {
                         onChange={(e) => setPassword(e.target.value)}
                     />
                     <button type="submit" className={styles.loginButton}>
-                        <a href="/student/home" className={styles.loginButtonLink}>
-                            Iniciar Sesión
-                        </a>
+                            Iniciar sesión
                     </button>
                 </form>
                 <div className={styles.additionalLinks}>
