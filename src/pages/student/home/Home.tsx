@@ -26,9 +26,9 @@ function HomeStudent() {
     <CustomNavbar>
       <h2 className={styles.sectionTitle}>¿Qué acción deseas realizar?</h2>
       <div className={styles.cardsContainer}>
-        {menuItems.map((item, index) => (
+        {menuItems.map((item) => (
           <CardsContainer
-            key={index}
+            key={item.link}
             link={item.link}
             image={item.image}
             title={item.title}

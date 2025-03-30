@@ -6,6 +6,7 @@ import NotFoundPage from './pages/not-found-page/NotFoundPage';
 import HomeStudent from './pages/student/home/Home';
 import MyBookings from './pages/my-bookings/MyBookings';
 import CreateBooking from './pages/create-booking/CreateBooking';
+import LabReservation from './pages/labReservation/LabReservation';
 
 function App() {
   return (
@@ -16,7 +17,9 @@ function App() {
                 <Route path="*" element={<NotFoundPage />} />
                 <Route path="/student/home" element={<HomeStudent />} />
                 <Route path="/mis-reservas" element={<MyBookings />} />
-                <Route path="/crear-reserva" element={<CreateBooking />} />
+                <Route path="/crear-reserva" element={<LabReservation />} />
+                <Route path="/crear-reserva/:id" element={<CreateBooking />} />
+                
           </Routes>
       </BrowserRouter>
   );
