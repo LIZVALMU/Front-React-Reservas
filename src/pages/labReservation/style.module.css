@@ -1,0 +1,103 @@
+.container {
+    font-family: 'Inter', sans-serif;
+    background-color: #f3f4f6; /* Color de fondo */
+    text-align: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 70vh;
+    padding: 1.5rem;
+}
+
+.title {
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: #374151; /* Gris oscuro */
+}
+
+.tableContainer {
+    width: 100%;
+    max-width: 80rem;
+    background-color: rgb(255, 255, 255);
+    padding: 1rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(160, 148, 148, 0.1); /* Sombra más suave */
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.th, .td {
+    padding: 12px;
+    text-align: center;
+}
+
+.th {
+    background-color: #830404; /* Azul principal */
+    color: rgb(255, 255, 255);
+    font-weight: 600;
+    border-bottom: 2px solid #000000;
+}
+
+.td {
+    border-bottom: 1px solid #000000;
+    color: #374151;
+}
+
+.td:nth-child(odd) {
+    background-color: #ded2d2;
+}
+
+/* 🔹 Botones con el mismo estilo del Custom Bar */
+.button {
+    background-color: #0e9140;
+    color: white;
+    padding: 10px 18px;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.button:hover {
+    background-color: #1e40af;
+}
+
+.button:disabled {
+    background-color: #9ca3af;
+    cursor: not-allowed;
+}
+
+/* 🔹 Select con mejor estilo */
+.selectContainer {
+    margin-bottom: 20px;
+}
+
+.selectContainer select {
+    padding: 10px;
+    font-size: 1rem;
+    border-radius: 8px;
+    border: 1px solid #cbd5e1;
+    background-color: white;
+    cursor: pointer;
+}
+
+/* 🔹 Pie de página */
+.footer {
+    margin-top: 2rem;
+    font-size: 0.9rem;
+    color: #6b7280;
+}

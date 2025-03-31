@@ -1,0 +1,161 @@
+.notFoundContainer {
+    min-height: 100vh;
+    background: linear-gradient(135deg, rgba(42, 82, 152, 0.85), rgba(43, 70, 54, 0.85)), 
+                  url('../../../public/images/fondologin.png') no-repeat center center;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    overflow: hidden;
+    position: relative;
+}
+
+.notFoundContainer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.15);
+    z-index: 1;
+    pointer-events: none;
+}
+
+.notFoundCard {
+    background: rgba(255, 255, 255, 0.97);
+    border-radius: 25px;
+    padding: 60px 45px;
+    max-width: 550px;
+    width: 100%;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+    backdrop-filter: blur(8px);
+    animation: slideInCenter 0.7s ease-out;
+    position: relative;
+    z-index: 2;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    text-align: center;
+}
+
+.errorCode {
+    color: #0e9140;
+    font-size: 120px;
+    font-weight: 900;
+    margin: 0;
+    letter-spacing: 2px;
+    text-shadow: 0 4px 8px rgba(14, 145, 64, 0.3);
+    line-height: 1;
+}
+
+.errorTitle {
+    color: #222;
+    font-size: 34px;
+    font-weight: 800;
+    margin: 20px 0;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.errorMessage {
+    color: #444;
+    font-size: 18px;
+    margin-bottom: 40px;
+    font-style: italic;
+    opacity: 0.9;
+    line-height: 1.5;
+}
+
+.backButton {
+    background: linear-gradient(90deg, #13a550, #0e9140);
+    color: white;
+    padding: 16px 32px;
+    border: none;
+    border-radius: 12px;
+    font-size: 18px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.4s ease;
+    box-shadow: 0 5px 18px rgba(19, 165, 80, 0.5);
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+    text-decoration: none;
+}
+
+.backButton::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.6s ease, height 0.6s ease;
+}
+
+.backButton:hover::after {
+    width: 200%;
+    height: 200%;
+}
+
+.backButton:hover {
+    background: linear-gradient(90deg, #0e9140, #026b19);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(19, 165, 80, 0.7);
+}
+
+@keyframes slideInCenter {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@media (max-width: 768px) {
+    .notFoundCard {
+        padding: 50px 35px;
+        max-width: 500px;
+    }
+    
+    .errorCode {
+        font-size: 100px;
+    }
+    
+    .errorTitle {
+        font-size: 30px;
+    }
+}
+
+@media (max-width: 480px) {
+    .notFoundContainer {
+        padding: 15px;
+    }
+    
+    .notFoundCard {
+        padding: 40px 25px;
+    }
+    
+    .errorCode {
+        font-size: 80px;
+    }
+    
+    .errorTitle {
+        font-size: 26px;
+    }
+    
+    .errorMessage {
+        font-size: 16px;
+    }
+    
+    .backButton {
+        font-size: 16px;
+        padding: 14px 28px;
+    }
+}
