@@ -1,14 +1,10 @@
 import React, { useState, useRef, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import styles from "./style.module.css";
 import { CustomNavbarProps, DropdownMenuProps } from "./TypesCustomBar";
 
 /**
  * A functional component that renders a dropdown menu item as a link.
- *
- * @param {Object} props - The props for the component.
- * @param {string} props.linkTo - The URL to which the dropdown item should link.
- * @param {string} props.title - The text to display for the dropdown item.
- * @returns {JSX.Element} A styled anchor element representing the dropdown menu item.
  */
 const DropdownMenu = ({ linkTo, title }: DropdownMenuProps) => {
 	return (
@@ -22,6 +18,7 @@ function CustomNavbar({ children }: CustomNavbarProps) {
 	const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 	const dropdownRef = useRef<HTMLDivElement | null>(null);
 	const [userName, setUserName] = useState('');
+	const navigate = useNavigate(); // Hook para la navegación
 
 	const toggleDropdown = () => {
 		setIsDropdownOpen((prev) => !prev);
@@ -43,16 +40,24 @@ function CustomNavbar({ children }: CustomNavbarProps) {
 	}, []);
 
 	const menuItems = [
-		{ linkTo: "/profile", title: "Perfil" },
-		{ linkTo: "/settings", title: "Configuración" },
-		{ linkTo: "/logout", title: "Cerrar Sesión" },
+		{ linkTo: "/profile", title: "👤 Perfil" },
+		{ linkTo: "/settings", title: "⚙️ Configuración" },
+		{ linkTo: "/logout", title: "🔒 Cerrar Sesión" },
 	];
 
 	return (
 		<div className={styles.container}>
 			<nav className={styles.navbar}>
 				<div className={styles.navbarContent}>
-					<div className={styles.navbarTitle}>Dashboard</div>
+					<div className={styles.navButtons}>
+						<button className={styles.navButton} onClick={() => navigate(-1)}>
+							🔙 Volver
+						</button>
+						<button className={styles.navButton} onClick={() => navigate("/student/home")}>
+							🏠 Menú Principal
+						</button>
+					</div>
+					<div className={styles.navbarTitle}>Reserva de laboratorios</div>
 					<div className={styles.userMenu} ref={dropdownRef}>
 						<button className={styles.userButton} onClick={toggleDropdown}>
 							{userName}
